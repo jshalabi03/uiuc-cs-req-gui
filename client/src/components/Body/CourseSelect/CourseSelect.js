@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import { FaCaretUp, FaCaretDown } from "react-icons/fa";
 import "./CourseSelect.css";
 
 const orientation_course_names = ["ENG 100", "CS 210", "CS 211"];
@@ -16,48 +18,81 @@ const advanced_elective_course_names = [
   "Advanced elective #2",
 ];
 
-const CourseSelect = ({ selectedCourses, techElectiveData, techCoreData }) => {
-  const orientation_course_names_needed = orientation_course_names.filter(
-    (course) => !selectedCourses.includes(course)
-  );
-  const foundation_course_names_needed = foundation_course_names.filter(
-    (course) => !selectedCourses.includes(course)
-  );
-  const tech_core_courses_needed = techCoreData.filter(
-    (row) => !selectedCourses.includes(row["Course"])
-  );
+const CourseSelect = ({
+  selectedCourses,
+  techElectiveData,
+  techCoreData,
+  handleCheck,
+  handleSelectAll,
+}) => {
+  //   const orientation_course_names_needed = orientation_course_names.filter(
+  //     (course) => !selectedCourses.includes(course)
+  //   );
+  //   const foundation_course_names_needed = foundation_course_names.filter(
+  //     (course) => !selectedCourses.includes(course)
+  //   );
+  //   const tech_core_courses_needed = techCoreData.filter(
+  //     (row) => !selectedCourses.includes(row["Course"])
 
   return (
     <aside className="course-select">
       <h1 className="course-select-header">Completed Courses</h1>
       <div className="course-selections">
-        {/* <button
-          onClick={() => {
-            console.log("ocn: ", orientation_course_names_needed);
-            console.log("fcn: ", foundation_course_names_needed);
-            console.log("tccn: ", tech_core_courses_needed);
-          }}
-        >
-          log
-        </button> */}
+        <CourseSelection
+          courseNames={orientation_course_names}
+          selectedCourses={selectedCourses}
+          handleCheck={handleCheck}
+          handleSelectAll={handleSelectAll}
+          label="Orientation & Professional Development"
+        />
       </div>
     </aside>
   );
 };
 
-const CourseSelection = ({ courseNames, selectedCourses, handleCheck }) => {
+const CourseSelection = ({
+  courseNames,
+  selectedCourses,
+  handleCheck,
+  handleSelectAll,
+  label,
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   return (
     <div className="course-selection">
-      {courseNames.map((courseName) => (
-        <div className="course-selection-item">
+      <div
+        className="course-selection-header"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <h3>{label}</h3>
+        {isExpanded ? (
+          <FaCaretDown className="course-selection-header-icon" />
+        ) : (
+          <FaCaretUp className="course-selection-header-icon" />
+        )}
+      </div>
+
+      {isExpanded && (
+        <>
           <input
             type="checkbox"
-            checked={selectedCourses.includes(courseName)}
-            onChange={() => handleCheck(courseName)}
+            value={courseNames}
+            onChange={handleSelectAll}
           />
-          <label>{courseName}</label>
-        </div>
-      ))}
+          <label>Select All</label>
+          {courseNames.map((courseName) => (
+            <div className="course-selection-item" key={courseName}>
+              <input
+                type="checkbox"
+                value={courseName}
+                checked={selectedCourses.includes(courseName)}
+                onChange={handleCheck}
+              />
+              <label>{courseName}</label>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };

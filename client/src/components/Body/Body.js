@@ -37,12 +37,32 @@ const Body = () => {
       });
   }, []);
 
+  const handleCheck = (event) => {
+    const course = event.target.value;
+    if (event.target.checked) {
+      setSelectedCourses([...selectedCourses, course]);
+    } else {
+      setSelectedCourses(selectedCourses.filter((c) => c !== course));
+    }
+  };
+
+  const handleSelectAll = (event) => {
+    const courses = event.target.value.split(",");
+    if (event.target.checked) {
+      setSelectedCourses([...selectedCourses, ...courses]);
+    } else {
+      setSelectedCourses(selectedCourses.filter((c) => !courses.includes(c)));
+    }
+  };
+
   return (
     <div className="body">
       <CourseSelect
         selectedCourses={selectedCourses}
         techElectiveData={techElectiveData}
         techCoreData={techCoreData}
+        handleCheck={handleCheck}
+        handleSelectAll={handleSelectAll}
       />
       <MainContent
         selectedCourses={selectedCourses}

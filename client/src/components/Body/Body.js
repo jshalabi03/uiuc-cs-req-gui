@@ -21,7 +21,7 @@ const Body = () => {
           header: true,
           skipEmptyLines: true,
         });
-        console.log("te: ", result.data);
+        // console.log("te: ", result.data);
         setTechElectiveData(result.data);
       });
 
@@ -32,7 +32,7 @@ const Body = () => {
           header: true,
           skipEmptyLines: true,
         });
-        console.log("tc: ", result.data);
+        // console.log("tc: ", result.data);
         setTechCoreData(result.data);
       });
   }, []);

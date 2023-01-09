@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import logo from "./assets/illini_logo.svg";
+import { FaGithub } from "react-icons/fa";
+import Body from "./components/Body/Body";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="header-logo-container">
+          <img src={logo} alt="Illinois" className="header-logo" />
+          <a
+            href="https://github.com/jshalabi03/uiuc-cs-req-gui"
+            target="_blank"
+          >
+            <FaGithub className="header-logo link" />
+          </a>
+        </div>
+        <h1 className="header-title">UIUC CS Req Explorer</h1>
       </header>
+      <hr />
+      <Body />
     </div>
   );
 }

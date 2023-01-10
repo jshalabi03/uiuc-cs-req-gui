@@ -40,7 +40,7 @@ const ElectiveSelection = ({
       </div>
 
       {isExpanded && (
-        <div>
+        <div className="elective-selection-body">
           <input
             type="text"
             placeholder="Add TE"
@@ -66,7 +66,10 @@ const ElectiveSelection = ({
                       type="checkbox"
                       value={course}
                       checked={selectedCourses.includes(course)}
-                      onChange={handleCheck}
+                      onChange={(e) => {
+                        handleCheck(e);
+                        setSearchQuery("");
+                      }}
                     />
                     <label>
                       {course} -{" "}

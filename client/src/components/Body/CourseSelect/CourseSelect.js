@@ -5,7 +5,7 @@ import { FaCaretUp, FaCaretDown } from "react-icons/fa";
 import ElectiveSelection from "./ElectiveSelection";
 import "./CourseSelect.css";
 
-export const orientation_course_names = ["ENG 100", "CS 210", "CS 211"];
+export const orientation_course_names = ["ENG 100", "CS 210 or CS 211"];
 export const foundation_course_names = [
   "MATH 221",
   "MATH 231",

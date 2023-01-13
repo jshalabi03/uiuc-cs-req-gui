@@ -4,6 +4,9 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3080;
 
+const cors = require("cors");
+app.use(cors());
+
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.get("/data/:file", (req, res) => {

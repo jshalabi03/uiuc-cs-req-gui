@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/uiuc-cs-req-gui/static/css/main.f1ad6a84.css",
-    "main.js": "/uiuc-cs-req-gui/static/js/main.e25f24e9.js",
-    "static/js/787.89f3bd8f.chunk.js": "/uiuc-cs-req-gui/static/js/787.89f3bd8f.chunk.js",
-    "index.html": "/uiuc-cs-req-gui/index.html",
-    "static/media/illini_logo.svg": "/uiuc-cs-req-gui/static/media/illini_logo.8cce2df93b7e3e2246628da7b2d1d529.svg",
-    "main.f1ad6a84.css.map": "/uiuc-cs-req-gui/static/css/main.f1ad6a84.css.map",
-    "main.e25f24e9.js.map": "/uiuc-cs-req-gui/static/js/main.e25f24e9.js.map",
-    "787.89f3bd8f.chunk.js.map": "/uiuc-cs-req-gui/static/js/787.89f3bd8f.chunk.js.map"
+    "main.css": "/static/css/main.f1ad6a84.css",
+    "main.js": "/static/js/main.d2e8e128.js",
+    "static/js/787.89f3bd8f.chunk.js": "/static/js/787.89f3bd8f.chunk.js",
+    "index.html": "/index.html",
+    "static/media/illini_logo.svg": "/static/media/illini_logo.8cce2df93b7e3e2246628da7b2d1d529.svg",
+    "main.f1ad6a84.css.map": "/static/css/main.f1ad6a84.css.map",
+    "main.d2e8e128.js.map": "/static/js/main.d2e8e128.js.map",
+    "787.89f3bd8f.chunk.js.map": "/static/js/787.89f3bd8f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f1ad6a84.css",
-    "static/js/main.e25f24e9.js"
+    "static/js/main.d2e8e128.js"
   ]
 }

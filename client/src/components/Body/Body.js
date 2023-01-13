@@ -27,7 +27,7 @@ const Body = () => {
           });
           // console.log("te: ", result.data);
           localStorage.setItem("techElectiveData", JSON.stringify(result.data));
-          setTechElectiveData(JSON.parse(result.data));
+          setTechElectiveData(result.data);
         });
     }
 
@@ -44,7 +44,7 @@ const Body = () => {
           });
           // console.log("tc: ", result.data);
           localStorage.setItem("techCoreData", JSON.stringify(result.data));
-          setTechCoreData(JSON.parse(result.data));
+          setTechCoreData(result.data);
         });
     }
   }, [API_URL]);

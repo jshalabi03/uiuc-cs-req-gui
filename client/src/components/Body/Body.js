@@ -14,30 +14,40 @@ const Body = () => {
   const [techCoreData, setTechCoreData] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_URL}/data/cs-tech-electives.csv`)
-      .then((response) => response.text())
-      .then((csvData) => {
-        const result = PapaParse.parse(csvData, {
-          header: true,
-          skipEmptyLines: true,
+    const cachedTechElectiveData = localStorage.getItem("techElectiveData");
+    if (cachedTechElectiveData) {
+      setTechElectiveData(JSON.parse(cachedTechElectiveData));
+    } else {
+      fetch(`${API_URL}/data/cs-tech-electives.csv`)
+        .then((response) => response.text())
+        .then((csvData) => {
+          const result = PapaParse.parse(csvData, {
+            header: true,
+            skipEmptyLines: true,
+          });
+          // console.log("te: ", result.data);
+          localStorage.setItem("techElectiveData", JSON.stringify(result.data));
+          setTechElectiveData(JSON.parse(result.data));
         });
-        // console.log("te: ", result.data);
-        localStorage.setItem("techElectiveData", JSON.stringify(result.data));
-        setTechElectiveData(result.data);
-      });
+    }
 
-    fetch(`${API_URL}/data/cs-tech-core.csv`)
-      .then((response) => response.text())
-      .then((csvData) => {
-        const result = PapaParse.parse(csvData, {
-          header: true,
-          skipEmptyLines: true,
+    const cachedTechCoreData = localStorage.getItem("techCoreData");
+    if (cachedTechCoreData) {
+      setTechCoreData(JSON.parse(cachedTechCoreData));
+    } else {
+      fetch(`${API_URL}/data/cs-tech-core.csv`)
+        .then((response) => response.text())
+        .then((csvData) => {
+          const result = PapaParse.parse(csvData, {
+            header: true,
+            skipEmptyLines: true,
+          });
+          // console.log("tc: ", result.data);
+          localStorage.setItem("techCoreData", JSON.stringify(result.data));
+          setTechCoreData(JSON.parse(result.data));
         });
-        // console.log("tc: ", result.data);
-        localStorage.setItem("techCoreData", JSON.stringify(result.data));
-        setTechCoreData(result.data);
-      });
-  }, []);
+    }
+  }, [API_URL]);
 
   const handleCheck = (event) => {
     const course = event.target.value;
@@ -61,19 +71,19 @@ const Body = () => {
     <div className="body">
       <CourseSelect
         selectedCourses={selectedCourses}
-        // techElectiveData={techElectiveData}
-        // techCoreData={techCoreData}
-        techElectiveData={JSON.parse(localStorage.getItem("techElectiveData"))}
-        techCoreData={JSON.parse(localStorage.getItem("techCoreData"))}
+        techElectiveData={techElectiveData}
+        techCoreData={techCoreData}
+        // techElectiveData={JSON.parse(localStorage.getItem("techElectiveData"))}
+        // techCoreData={JSON.parse(localStorage.getItem("techCoreData"))}
         handleCheck={handleCheck}
         handleSelectAll={handleSelectAll}
       />
       <MainContent
         selectedCourses={selectedCourses}
-        // techElectiveData={techElectiveData}
-        // techCoreData={techCoreData}
-        techElectiveData={JSON.parse(localStorage.getItem("techElectiveData"))}
-        techCoreData={JSON.parse(localStorage.getItem("techCoreData"))}
+        techElectiveData={techElectiveData}
+        techCoreData={techCoreData}
+        // techElectiveData={JSON.parse(localStorage.getItem("techElectiveData"))}
+        // techCoreData={JSON.parse(localStorage.getItem("techCoreData"))}
       />
     </div>
   );

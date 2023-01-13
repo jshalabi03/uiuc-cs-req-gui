@@ -15,24 +15,6 @@ function App() {
           >
             <FaGithub className="header-logo link" />
           </a>
-          <button
-            onClick={() => {
-              console.log(localStorage.getItem("techElectiveData"));
-              console.log(localStorage.getItem("techCoreData"));
-            }}
-          >
-            Log
-          </button>
-          <button
-            onClick={() => {
-              let data = localStorage.getItem("techElectiveData");
-              // parse data
-              data = JSON.parse(data);
-              console.log(data.map((d) => d["Course"]));
-            }}
-          >
-            Log B
-          </button>
         </div>
         <h1 className="header-title">UIUC CS Req Explorer</h1>
       </header>

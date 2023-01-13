@@ -22,6 +22,7 @@ const Body = () => {
           skipEmptyLines: true,
         });
         // console.log("te: ", result.data);
+        localStorage.setItem("techElectiveData", JSON.stringify(result.data));
         setTechElectiveData(result.data);
       });
 
@@ -33,6 +34,7 @@ const Body = () => {
           skipEmptyLines: true,
         });
         // console.log("tc: ", result.data);
+        localStorage.setItem("techCoreData", JSON.stringify(result.data));
         setTechCoreData(result.data);
       });
   }, []);
@@ -59,15 +61,19 @@ const Body = () => {
     <div className="body">
       <CourseSelect
         selectedCourses={selectedCourses}
-        techElectiveData={techElectiveData}
-        techCoreData={techCoreData}
+        // techElectiveData={techElectiveData}
+        // techCoreData={techCoreData}
+        techElectiveData={JSON.parse(localStorage.getItem("techElectiveData"))}
+        techCoreData={JSON.parse(localStorage.getItem("techCoreData"))}
         handleCheck={handleCheck}
         handleSelectAll={handleSelectAll}
       />
       <MainContent
         selectedCourses={selectedCourses}
-        techElectiveData={techElectiveData}
-        techCoreData={techCoreData}
+        // techElectiveData={techElectiveData}
+        // techCoreData={techCoreData}
+        techElectiveData={JSON.parse(localStorage.getItem("techElectiveData"))}
+        techCoreData={JSON.parse(localStorage.getItem("techCoreData"))}
       />
     </div>
   );
